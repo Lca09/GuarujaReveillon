@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reveillon Guaruja - Amigos do Dan</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        #countdown {
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reveillon Guaruja - Amigos do Dan</h1>
+    <div id="countdown"></div>
+
+    <script>
+        function updateCountdown() {
+            const eventDate = new Date("December 28, 2024 00:00:00").getTime();
+            const now = new Date().getTime();
+            const timeLeft = eventDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = 
+                days + " dias " + hours + " horas " + minutes + " minutos " + seconds + " segundos ";
+
+            if (timeLeft < 0) {
+                document.getElementById("countdown").innerHTML = "O evento começou!";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
